@@ -59,12 +59,13 @@ export function Formulario() {
     });
 
     async function onSubmit({ cantidad, fecha, producto }) {
-        const res = await fetch('api/products', {
+        await fetch('api/products', {
             method: 'POST',
             body: JSON.stringify({ cantidad, fecha, producto }),
         }).then((res) => res.json());
 
-        console.log(res);
+        form.reset()
+        form.clearErrors()
     }
 
     return (

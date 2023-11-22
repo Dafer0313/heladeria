@@ -13,7 +13,7 @@ export const Navbar = () => {
                 <li>
                     <Link
                         className='text-lg font-medium leading-7'
-                        href='/productos'
+                        href='/products'
                     >
                         Productos
                     </Link>
