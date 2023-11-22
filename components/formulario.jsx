@@ -30,6 +30,7 @@ import {
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { Calendar } from './ui/calendar';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
     cantidad: z.coerce
@@ -59,11 +60,11 @@ export function Formulario() {
     });
 
     async function onSubmit({ cantidad, fecha, producto }) {
-        await fetch('api/products', {
+        await fetch('/api/products', {
             method: 'POST',
             body: JSON.stringify({ cantidad, fecha, producto }),
         }).then((res) => res.json());
-
+        toast.success('Producto creado correctamente')
         form.reset()
         form.clearErrors()
     }
