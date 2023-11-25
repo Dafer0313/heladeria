@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/table';
 import { DeleteButton } from '@/components/delete-button';
 import { auth } from '@/lib/auth';
+import { EditButton } from '@/components/edit-button';
 
 const Productos = async () => {
     const session = await auth();
@@ -32,6 +33,8 @@ const Productos = async () => {
                         <TableHead className='text-right'>
                             Fecha de compra
                         </TableHead>
+                        <TableHead className='text-right'>Editar</TableHead>
+                        <TableHead className='text-right'>Eliminar</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -50,6 +53,9 @@ const Productos = async () => {
                                 </TableCell>
                                 <TableCell className='text-right'>
                                     <DeleteButton id={venta.id} />
+                                </TableCell>
+                                <TableCell className='text-right'>
+                                    <EditButton producto={venta} />
                                 </TableCell>
                             </TableRow>
                         ))}
