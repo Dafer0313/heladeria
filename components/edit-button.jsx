@@ -70,8 +70,6 @@ export const EditButton = ({ producto }) => {
             }),
         }).then((res) => res.json());
 
-        console.log(res);
-
         toast.success('Producto actualizado con exito');
         router.refresh();
     };
