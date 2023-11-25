@@ -35,9 +35,10 @@ import { toast } from 'sonner';
 const formSchema = z.object({
     cantidad: z.coerce
         .number()
-        .positive()
-        .nonnegative()
-        .gte(5, 'Debe ser mayor a 5')
+        .positive('No se puede 0 o negativos')
+        .nonnegative('No se pueden números negativos')
+        .int('Deben ser números enteros')
+        .gte(1, 'Debe ser mayor a 1')
         .refine((val) => !Number.isNaN(parseInt(val, 10)), {
             message: 'Ingresa un numero',
         }),
@@ -64,9 +65,9 @@ export function Formulario() {
             method: 'POST',
             body: JSON.stringify({ cantidad, fecha, producto }),
         }).then((res) => res.json());
-        toast.success('Producto creado correctamente')
-        form.reset()
-        form.clearErrors()
+        toast.success('Producto creado correctamente');
+        form.reset();
+        form.clearErrors();
     }
 
     return (
