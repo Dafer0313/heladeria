@@ -12,8 +12,6 @@ import {
 import { DeleteButton } from '@/components/delete-button';
 import { auth } from '@/lib/auth';
 
-export const dynamic = 'force-dynamic';
-
 const Productos = async () => {
     const session = await auth();
 
